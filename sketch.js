@@ -1,46 +1,47 @@
 let t = 0;
 let num = 10;
-let sZ, sZ2;
+let sZ, sZ2, sZ3;
 let starNum = 50;
 let canvas2;
 
 function setup() {
   //colorMode(HSB);
   createCanvas(windowWidth, windowHeight);
-  //background(20);
+  background(20);
 }
 
+
 function draw() {
-  background(20);
+//background(20);
 noStroke();
 
-// for (let s=0; s<starNum; s++){
-//   circle(random(width),random(height),random(5));
-// }
-
   translate(width/2, height/2);
+  fill (255);
   circle(0,0, 300);
   //draw faint fractal in bg
   //add pulsing/fading stars?
-  //add some more planet orbits
   //increment/change central planet somehow- look at generative sketch w/color somehow?
-  //add background just over planet orbit path
 
-for (let i =0; i<num; i++){
+//for (let i =0; i<num; i++){
   sZ = map(x2(t), 0, width, 25, 100);
   sZ2 = map(x2(t),0, width, 75,200);
+  sZ3 = map(x2(t),0, width, 10,75);
   fill(255);
   circle(x1(t),y1(t),sZ);
   fill(0,0,255);
   circle(x1(t*2), y1(t)+75, sZ2);
-}
-  t+=0.1;
+  fill(0,255,0);
+  circle(x1(t/2)+50, y1(t)-100, sZ3);
+//}
+  t+=0.08;
 
+beginShape();
+for(let i = 0; i<200; i++){
 stroke(255,0,0);
 strokeWeight(5);
-point(x2(t),y2(t));
-
-
+vertex(x2(t),y2(t));
+}
+endShape();
 }
 
 //big oval loop path
